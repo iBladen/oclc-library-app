@@ -1,34 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import BookTable from "./BookTable";
 
-function App() {
-  const [count, setCount] = useState(0)
+export type Book = {
+  id: number;
+  title: string;
+  subject: string;
+};
 
+let defaultBooks: Book[] = [
+  {
+    id: 1,
+    title: "The Design of Everyday Things",
+    subject: "Design",
+  },
+  {
+    id: 2,
+    title: "The Most Human Human",
+    subject: "Computer Science",
+  },
+];
+
+export default function App() {
+  const [books, setBooks] = useState(defaultBooks);
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <>
+      <h1>Library App</h1>
+      {books.length > 0 ? (
+        <BookTable books={books} setBooks={setBooks} />
+      ) : (
+        <p>No books found</p>
+      )}
+    </>
+  );
 }
-
-export default App
