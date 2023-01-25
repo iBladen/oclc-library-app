@@ -34,13 +34,13 @@ Q. How do we declare what values our component accepts?
 A. PropTypes. Type definitions.
 
 Q. When do you declare a key? Why declare a key? What’s a good key? What’s a bad key?
-A. Declare a key when looping through a set of objects to help identify the uniqueness of the object. A bad key is the loop index. A good key would be a primary key.
+A. Declare a key when looping through a set of objects to help identify the uniqueness of the object. A bad key is the loop index. A good key would be a primary key. Key needs to be unique to the array.
 
 Q. How do you run an npm script?
 A. npm run "script".
 
 Q. How do you make a function public?
-A. Export it.
+A. Export it. Private is by default.
 
 Q. When does React re-render?
 A. When something within the state changes.
@@ -52,10 +52,10 @@ Q. What tool are we using to automatically format our code?
 A. Prettier.
 
 Q. What does JSX compile down to?
-A. HTML.
+A. Plain old JS.
 
 Q. What array method did we use to iterate over the list of books? What does it return?
-A. Filter / Some / Any.
+A. Map. Returns another array.
 
 Q. What is a predicate?
 A. A function that returns a boolean.
@@ -73,7 +73,7 @@ Q. Does const make an object immutable?
 A. No, you can still change variables within an object.
 
 Q. Name 2 ways to declare a React component. Which should you prefer?
-A.
+A. As a function or a class. Should prefer a function
 
 Q. What’s the name for arguments passed to React components?
 A. props.
@@ -82,7 +82,7 @@ Q. How do we specify the types for each argument?
 A. Using the colon character followed by what type it is.
 
 Q. How did we debug?
-A. Added 'debugger;' to the line we want to debug at.
+A. Added 'debugger;' to the line we want to debug at. (Open dev tools)
 
 Q. Is the code we see in the browser what’s actually running?
 A. No. Can't explain why though, I forget.

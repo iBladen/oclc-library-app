@@ -1,7 +1,15 @@
 import { IconButton, TableCell, TableRow } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Book } from "./App";
 
-export default function BookRow({ books, book, setBooks }) {
+type BookRowProps = {
+  books: Book[];
+  book: Book;
+  setBooks: (books: Book[]) => void;
+};
+// ?: optional param
+
+export default function BookRow({ books, book, setBooks }: BookRowProps) {
   return (
     <TableRow key={book.id}>
       <TableCell>

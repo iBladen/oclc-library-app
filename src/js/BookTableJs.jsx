@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import BookRow from "./BookRow";
 
-export default function BookTable({ books, setBooks }) {
+export default function BookTableJs({ books, setBooks }) {
   return (
     <Table>
       <TableHead>
@@ -25,3 +25,14 @@ export default function BookTable({ books, setBooks }) {
     </Table>
   );
 }
+
+BookTableJs.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.object({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.number.isRequired,
+      subject: PropTypes.number.isRequired,
+    })
+  ),
+  setBooks: PropTypes.func.isRequired,
+};
