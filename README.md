@@ -86,3 +86,14 @@ A. Added 'debugger;' to the line we want to debug at. (Open dev tools)
 
 Q. Is the code we see in the browser what’s actually running?
 A. No. Can't explain why though, I forget.
+
+# Testing
+
+npx playwright test (Run all tests)
+npx playwright test --debug (Run tests and view what it's doing in the browser, step by step)
+npx playwright test --headed (Run tests and view what it's doing in the browser)
+npx playwright test books (Run a specific test)
+
+# Notes
+
+useEffect is used to run the code some of the time.

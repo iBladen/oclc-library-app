@@ -5,8 +5,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-
-import { Book } from "./App";
+import { Book } from "./Books";
 import BookRow from "./BookRow";
 
 type BookTableProps = {
@@ -17,6 +16,7 @@ type BookTableProps = {
 export default function BookTable({ books, setBooks }: BookTableProps) {
   return (
     <Table>
+      <caption>List of Books</caption>
       <TableHead>
         <TableRow>
           <TableCell></TableCell>
@@ -26,7 +26,12 @@ export default function BookTable({ books, setBooks }: BookTableProps) {
       </TableHead>
       <TableBody>
         {books.map((book) => (
-          <BookRow book={book} books={books} setBooks={setBooks} />
+          <BookRow
+            key={book.id}
+            book={book}
+            books={books}
+            setBooks={setBooks}
+          />
         ))}
       </TableBody>
     </Table>
