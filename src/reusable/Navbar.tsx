@@ -1,11 +1,33 @@
 import { AppBar, Button, MenuItem, Toolbar, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-export default function NavBar() {
+export type Link = {
+  label: string;
+  path: string;
+};
+
+type NavbarProps = {
+  links: Link[];
+};
+
+export default function Navbar({ links }: NavbarProps) {
   return (
     <AppBar position="static">
       <Toolbar>
-        <MenuItem key={"Home"}>
+        {links.map((link) => (
+          <MenuItem key={link.label}>
+            <Typography textAlign="center">
+              <Button
+                component={NavLink}
+                to={link.path}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {link.label}
+              </Button>
+            </Typography>
+          </MenuItem>
+        ))}
+        {/* <MenuItem key={"Home"}>
           <Typography textAlign="center">
             <Button
               component={NavLink}
@@ -37,7 +59,7 @@ export default function NavBar() {
               About
             </Button>
           </Typography>
-        </MenuItem>
+        </MenuItem> */}
       </Toolbar>
     </AppBar>
   );

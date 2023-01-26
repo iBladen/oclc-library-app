@@ -9,12 +9,19 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NavBar from "./typescript/Navbar";
+import NavBar from "./reusable/Navbar";
+import { Link } from "./reusable/Navbar";
+
+const links: Link[] = [
+  { label: "Home", path: "/" },
+  { label: "Add Book", path: "/manage-book" },
+  { label: "about", path: "/about" },
+];
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <NavBar />
+      <NavBar links={links} />
       <main>
         <Routes>
           <Route path="/" element={<Books />} />

@@ -1,4 +1,6 @@
+import { Alert, Snackbar } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { getBooks } from "../services/BooksService";
 import BookTable from "./BookTable";
 import Spinner from "./Spinner";
@@ -9,19 +11,29 @@ export type Book = {
   subject: string;
 };
 
+export type NewBook = Omit<Book, "id">;
+
 export default function Books() {
+  const [showSaveBookSuccess, setShowSaveBookSuccess] = useState(false);
+  const { state } = useLocation();
   const [books, setBooks] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function loadBooks() {
-      console.log("hello");
       const books = await getBooks();
       setBooks(books);
       setIsLoading(false);
     }
     loadBooks();
+
+    setShowSaveBookSuccess(state?.showSaveBookSuccess === true ? true : false);
+    window.history.replaceState({}, "");
   }, []);
+
+  function handleClose() {
+    setShowSaveBookSuccess(false);
+  }
 
   return (
     <>
@@ -30,12 +42,21 @@ export default function Books() {
       ) : (
         <>
           <h1>Library App</h1>
-          <a href="manage-book">Add Book</a>
-          {books.length > 0 ? (
-            <BookTable books={books} setBooks={setBooks} />
-          ) : (
-            <p>No books available.</p>
-          )}
+          <Snackbar
+            open={showSaveBookSuccess}
+            autoHideDuration={3000}
+            onClose={handleClose}
+          >
+            <Alert
+              onClose={handleClose}
+              severity="success"
+              sx={{ width: "100%" }}
+            >
+              Book added!
+            </Alert>
+          </Snackbar>
+          <a href="manage-book">Add New Book</a>
+          <BookTable books={books} setBooks={setBooks} />
         </>
       )}
     </>
